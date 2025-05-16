@@ -7,8 +7,11 @@ import net.sf.image4j.codec.ico.ICODecoder
 import tracker.Util
 import tracker.Util.exitCallback
 import tracker.Util.icon
+import tracker.Util.showAlert
 import tracker.Util.tray
+import tracker.logic.MainService
 import kotlin.system.exitProcess
+
 
 object Tray {
 
@@ -34,33 +37,17 @@ object Tray {
     }
 
     private fun handleExit() {
-        println("Exiting...")
-            Thread {
-                try {
-                    Util.writer.close()
-                    updateToStopped()
-                    Util.uploader.uploadCsv(File(Util.filePath))
-                } catch (e: Exception) {
-                    println("Shutdown error: ${e.message}")
-                }
-
-                Platform.runLater {
-                    icon?.let { tray.remove(it) }
-                    exitCallback?.invoke()
-                    Platform.exit()
-                }
-                Thread.sleep(1000)
-                exitProcess(0)
-            }.start()
-        }
-
+        Thread {
+            MainService().stopTrackingWithGuiAlert()
+        }.start()
+    }
 
     fun updateToStopped() {
         icon?.image = loadImage("/happy_brain2.ico")
         icon?.toolTip = "Mouse Tracker: Stopped"
     }
 
-    private fun loadImage(path: String): Image {
+    fun loadImage(path: String): Image {
         val stream = Tray::class.java.getResourceAsStream(path)
             ?: throw IllegalArgumentException("Resource not found: $path")
         val images = ICODecoder.read(stream)

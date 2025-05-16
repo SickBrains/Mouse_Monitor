@@ -118,7 +118,6 @@ class DataCollectedController {
         windowCol.setCellValueFactory { SimpleStringProperty(it.value.window) }
         repeatsCol.setCellValueFactory { SimpleIntegerProperty(it.value.repeats).asObject() }
 
-
         sessionFile?.let { loadSessionData() }
     }
 

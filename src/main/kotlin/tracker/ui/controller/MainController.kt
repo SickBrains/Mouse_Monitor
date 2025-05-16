@@ -13,8 +13,10 @@ import javafx.stage.Stage
 import tracker.Util
 import tracker.Util.flushTimer
 import tracker.Util.sessionDir
+import tracker.Util.showAlert
 import tracker.Util.writer
 import tracker.input.MousePoller
+import tracker.logic.MainService
 import tracker.ui.Tray
 import java.io.File
 import java.util.*
@@ -26,18 +28,15 @@ class MainController {
 
     @FXML
     fun initialize() {
+        println(sessionDir.exists())
         if (!sessionDir.exists()) {
             sessionDir.mkdirs()
         }
-
         val files = sessionDir.listFiles { f ->
             f.isFile && f.canRead() && hasCsvHeader(f)
         }?.map { it.name } ?: emptyList()
-
-
         sessionFiles.items = FXCollections.observableArrayList(files)
         println("Found session files: $files")
-
     }
 
     private fun hasCsvHeader(file: File): Boolean {
@@ -53,34 +52,15 @@ class MainController {
         }
     }
 
-
+    private val trackingService = MainService()
 
     @FXML
     fun startButtonClicked(event: ActionEvent) {
         val stage = sessionFiles.scene.window as Stage
 
         Thread {
-            Tray.init(
-                onExitComplete = {
-                    Platform.runLater { stage.show() }
-                }
-            )
-            Platform.runLater {
-                stage.hide()
-            }
-
-
-            val poller = MousePoller()
-            Util.poller = poller
-            poller.start { snapshot ->writer.writeCondensed(snapshot) }
-
-            val timer = Timer()
-            flushTimer = timer
-            timer.scheduleAtFixedRate(object : TimerTask() {
-                override fun run() {
-                    writer.flush()
-                }
-            }, 1000, 1000)
+            trackingService.startTracking {}
+            Platform.runLater { stage.hide() }
         }.start()
     }
 
@@ -151,11 +131,5 @@ class MainController {
         }
     }
 
-    private fun showAlert(title: String, message: String) {
-        val alert = Alert(Alert.AlertType.INFORMATION)
-        alert.title = title
-        alert.headerText = null
-        alert.contentText = message
-        alert.showAndWait()
-    }
+
 }
