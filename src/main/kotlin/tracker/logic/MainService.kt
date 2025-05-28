@@ -37,6 +37,10 @@ class MainService {
     fun stopTrackingWithGuiAlert() {
         stopTracking()
 
+        // Convert CSV to Parquet before showing alert or exiting
+        val csvFile = File(Util.filePath)
+        tracker.convert.CsvToParquetConverter.convert(csvFile)
+
         Platform.runLater {
             val alert = Alert(Alert.AlertType.INFORMATION)
             alert.title = "Mouse Tracker"
@@ -55,8 +59,13 @@ class MainService {
 
     fun stopTracking() {
         shouldRun = false
-        flushTimer?.cancel()
-        Util.writer.close()
+        poller?.stop()              // 1. stop poller first
+        flushTimer?.cancel()        // 2. stop timer
+        Thread.sleep(50)            // 3. allow threads to wind down
+        Util.writer.close()         // 4. now safe to close writer
         Util.uploader.uploadCsv(File(Util.filePath))
     }
+
+
+
 }

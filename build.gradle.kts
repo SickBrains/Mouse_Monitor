@@ -13,17 +13,29 @@ repositories {
     mavenCentral()
 }
 
-val javafxVersion = "21"
+val javafxVersion = "21.0.2"
 val appName = "MouseMonitor"
+
+configurations.all {
+    exclude(group = "org.slf4j", module = "slf4j-log4j12")
+}
+
 
 dependencies {
     testImplementation(kotlin("test"))
     implementation("com.github.kwhat:jnativehook:2.2.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
     implementation("net.java.dev.jna:jna:5.14.0")
     implementation("net.java.dev.jna:jna-platform:5.14.0")
     implementation(files("libs/image4j-0.7.2.jar"))
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    implementation("org.apache.parquet:parquet-avro:1.15.2")
+    implementation("org.apache.avro:avro:1.11.4")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
+
+    // Add this line
+    implementation("org.apache.hadoop:hadoop-common:3.3.6")
 
     // JavaFX (Windows platform-specific)
     implementation("org.openjfx:javafx-base:$javafxVersion:win")
@@ -32,6 +44,7 @@ dependencies {
     implementation("org.openjfx:javafx-graphics:$javafxVersion:win")
 }
 
+
 kotlin {
     jvmToolchain(17)
 }
@@ -39,6 +52,7 @@ kotlin {
 application {
     mainClass.set("tracker.MainKt")
 }
+
 
 // === JavaFX module path setup for IntelliJ run ===
 val javafxModules = listOf("javafx.controls", "javafx.fxml")
@@ -56,9 +70,13 @@ tasks.withType<JavaExec>().configureEach {
 
 sourceSets {
     main {
+        kotlin.srcDir("src/main/kotlin")
         resources.srcDir("src/main/resources")
     }
 }
+
+
+sourceSets["main"].kotlin.srcDirs("src/main/kotlin")
 
 tasks.processResources {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
