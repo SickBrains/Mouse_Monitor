@@ -3,47 +3,70 @@ package tracker.data
 import java.io.FileWriter
 
 class CsvWriter(path: String) {
+
     private val writer = FileWriter(path)
     private var last: StateSnapshot? = null
     private var startTime: Long = 0
     private var endTime: Long = 0
     private var repeatCount = 0
+    private val lock = Any()
+    private var closed = false
 
     init {
-        writer.write("start,end,x,y,left,right,middle,x1,x2,ctrl,shift,alt,win,window,repeats\n")
+        synchronized(lock) {
+            writer.write("start,end,x,y,left,right,middle,x1,x2,ctrl,shift,alt,win,window,repeats\n")
+        }
     }
 
     fun writeCondensed(current: StateSnapshot) {
-        if (last == null) {
-            last = current
-            startTime = current.timestamp
-            endTime = current.timestamp
-            repeatCount = 1
-            return
-        }
+        synchronized(lock) {
+            if (closed) return
 
-        if (current.equivalentTo(last!!)) {
-            endTime = current.timestamp
-            repeatCount++
-        } else {
-            writeLast()
-            last = current
-            startTime = current.timestamp
-            endTime = current.timestamp
-            repeatCount = 1
+            if (last == null) {
+                last = current
+                startTime = current.timestamp
+                endTime = current.timestamp
+                repeatCount = 1
+                return
+            }
+
+            if (current.equivalentTo(last!!)) {
+                endTime = current.timestamp
+                repeatCount++
+            } else {
+                writeLast()
+                last = current
+                startTime = current.timestamp
+                endTime = current.timestamp
+                repeatCount = 1
+            }
         }
     }
 
     fun flush() {
-        writer.flush()
+        synchronized(lock) {
+            if (closed) return
+            try {
+                writer.flush()
+            } catch (e: Exception) {
+                println("Flush failed: ${e.message}")
+            }
+        }
     }
 
     fun close() {
-        if (last != null) {
-            writeLast()
+        synchronized(lock) {
+            if (closed) return
+            closed = true
+
+            try {
+                if (last != null) writeLast()
+                writer.flush()
+                writer.close()
+            } catch (e: Exception) {
+                println("Close failed: ${e.message}")
+            }
         }
-        writer.flush()
-        writer.close()
     }
 
     private fun writeLast() {

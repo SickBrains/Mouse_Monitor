@@ -74,35 +74,41 @@ object CsvToParquetConverter {
 
         lines.forEach { line ->
             val parts = line.split(",")
-            if (parts.size < 15) return@forEach
+            if (parts.size < 14 || parts.any { it.isEmpty() }) return@forEach
 
-            val record = GenericData.Record(schema).apply {
-                put("start", parts[0].toLong())
-                put("end", parts[1].toLong())
-                put("x", parts[2].toInt())
-                put("y", parts[3].toInt())
-                put("left", parts[4].toInt())
-                put("right", parts[5].toInt())
-                put("middle", parts[6].toInt())
-                put("x1", parts[7].toInt())
-                put("x2", parts[8].toInt())
-                put("ctrl", parts[9].toInt())
-                put("shift", parts[10].toInt())
-                put("alt", parts[11].toInt())
-                put("win", parts[12].toInt())
-                put("window", parts[13].removeSurrounding("\""))
-                put("repeats", parts.getOrNull(14)?.toInt() ?: 0)
+            try {
+                val record = GenericData.Record(schema).apply {
+                    put("start", parts[0].toLong())
+                    put("end", parts[1].toLong())
+                    put("x", parts[2].toInt())
+                    put("y", parts[3].toInt())
+                    put("left", parts[4].toInt())
+                    put("right", parts[5].toInt())
+                    put("middle", parts[6].toInt())
+                    put("x1", parts[7].toInt())
+                    put("x2", parts[8].toInt())
+                    put("ctrl", parts[9].toInt())
+                    put("shift", parts[10].toInt())
+                    put("alt", parts[11].toInt())
+                    put("win", parts[12].toInt())
+                    put("window", parts[13].removeSurrounding("\""))
+                    put("repeats", parts.getOrNull(14)?.toInt() ?: 0)
+                }
+                writer.write(record)
+            } catch (e: Exception) {
+                println("Skipping malformed row: $line (${e.message})")
             }
-
-            writer.write(record)
         }
-
-        writer.close()
 
         val metadata = MetadataCollector.collect()
         val jsonFile = File(csvFile.absolutePath.replace(".csv", ".meta.json"))
         jacksonObjectMapper()
             .writerWithDefaultPrettyPrinter()
             .writeValue(jsonFile, metadata)
+
+
+        writer.close()
+
+
     }
 }

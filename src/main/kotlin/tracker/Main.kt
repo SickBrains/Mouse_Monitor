@@ -1,9 +1,8 @@
 package tracker
 
-import com.sun.jna.NativeLibrary
 import javafx.application.Application
-
+import tracker.ui.FittsLawVisualizer
 
 fun main() {
-    Application.launch(MainApp::class.java)
+    Application.launch(FittsLawVisualizer::class.java)
 }

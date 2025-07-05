@@ -44,6 +44,7 @@ class MousePoller {
 
     fun stop() {
         timer?.cancel()
+        Thread.sleep(20)
         timer = null
     }
 

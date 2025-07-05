@@ -3,7 +3,6 @@ package tracker.logic
 import javafx.application.Platform
 import javafx.scene.control.Alert
 import tracker.Util
-import tracker.Util.shouldRun
 import tracker.input.MousePoller
 import tracker.ui.Tray
 import java.awt.TrayIcon
@@ -28,7 +27,11 @@ class MainService {
             Util.flushTimer = it
             it.scheduleAtFixedRate(object : TimerTask() {
                 override fun run() {
-                    Util.writer.flush()
+                    try {
+                        Util.writer.flush()
+                    } catch (e: Exception) {
+                        println("Flush failed: ${e.message}")
+                    }
                 }
             }, 1000, 1000)
         }
@@ -39,7 +42,11 @@ class MainService {
 
         // Convert CSV to Parquet before showing alert or exiting
         val csvFile = File(Util.filePath)
-        tracker.convert.CsvToParquetConverter.convert(csvFile)
+        try {
+            tracker.convert.CsvToParquetConverter.convert(csvFile)
+        } catch (e: Exception) {
+            println("Conversion failed: ${e.message}")
+        }
 
         Platform.runLater {
             val alert = Alert(Alert.AlertType.INFORMATION)
@@ -51,21 +58,33 @@ class MainService {
             Tray.updateToStopped()
             Util.icon?.let { Util.tray.remove(it) }
 
-            // HARD FORCE EXIT
             exitProcess(0)
         }
     }
 
-
     fun stopTracking() {
-        shouldRun = false
-        poller?.stop()              // 1. stop poller first
-        flushTimer?.cancel()        // 2. stop timer
-        Thread.sleep(50)            // 3. allow threads to wind down
-        Util.writer.close()         // 4. now safe to close writer
-        Util.uploader.uploadCsv(File(Util.filePath))
+        Util.shouldRun = false
+
+        // 1. Stop poller thread
+        poller?.stop()
+        Thread.sleep(50)
+
+        // 2. Cancel flush timer and give it time to exit
+        flushTimer?.cancel()
+        Thread.sleep(50)
+
+        // 3. Close writer AFTER all threads are dead
+        try {
+            Util.writer.close()
+        } catch (e: Exception) {
+            println("Writer close failed: ${e.message}")
+        }
+
+        // 4. Upload after file is safely written
+        try {
+            Util.uploader.uploadCsv(File(Util.filePath))
+        } catch (e: Exception) {
+            println("Upload failed: ${e.message}")
+        }
     }
-
-
-
 }
