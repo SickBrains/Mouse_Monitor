@@ -110,7 +110,7 @@ tasks.register<Exec>("jpackage") {
 
     commandLine = listOf(
         "jpackage",
-        "--type", "exe",
+        "--type", "msi",
         "--name", appName,
         "--input", "build/libs",
         "--main-jar", jarName,

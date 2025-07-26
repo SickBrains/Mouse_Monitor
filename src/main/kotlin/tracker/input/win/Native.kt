@@ -15,7 +15,6 @@ interface User32 : Library {
     fun GetForegroundWindow(): HWND
     fun GetWindowTextW(hWnd: HWND, lpString: CharArray, nMaxCount: Int): Int
 
-    // Renamed to correct Unicode version
     fun SystemParametersInfoW(
         uiAction: Int,
         uiParam: Int,

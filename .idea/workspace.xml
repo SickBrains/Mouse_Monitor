@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532ceec5-daa2-49bf-891e-b8fe3447ee1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/input/UIAutomationHelper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/FittsLawVisualizer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/all_code_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/all_code_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/Util.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/CsvToParquetConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/CsvToParquetConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/MetadataCollector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/MetadataCollector.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/SystemMetadata.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/SystemMetadata.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/data/CsvRow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/data/CsvRow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/data/StateSnapshot.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/data/StateSnapshot.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/data/Writer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/data/Writer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/input/MousePoller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/input/MousePoller.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/input/win/Native.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/input/win/Native.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/io/DiscordUploader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/io/DiscordUploader.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/logic/MainService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/logic/MainService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/Tray.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/Tray.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/controller/DataCollectedController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/controller/DataCollectedController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +41,35 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MouseMonitor" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MouseMonitor" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MouseMonitor" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MouseMonitor" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MouseMonitor" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -51,6 +84,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -80,38 +118,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build Mouseozp.executor": "Run",
-    "Gradle.Mouseozp [build].executor": "Run",
-    "Gradle.Mouseozp [classes].executor": "Run",
-    "Gradle.Mouseozp [clean].executor": "Run",
-    "Gradle.Mouseozp [run].executor": "Run",
-    "Kotlin.MainKt.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ADMIN/Documents/GitHub/Mouseozp/build.gradle.kts",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2862069",
-    "settings.editor.selected.configurable": "preferences.language.Kotlin.scripting",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build Mouseozp.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Mouseozp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Mouseozp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Mouseozp [jpackage].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Mouseozp [packageExe].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Mouseozp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;d7b29f80&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/GitHub/Mouseozp/build.gradle.kts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2862069&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.Kotlin.scripting&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ADMIN\Documents\GitHub\Mouseozp" />
       <recent name="C:\Users\ADMIN\Documents\GitHub\Mouseozp\src\main\kotlin\tracker" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Mouseozp [run]">
+  <component name="RunManager" selected="Gradle.Mouseozp [jpackage]">
     <configuration name="Mouseozp [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -124,28 +164,6 @@
         <option name="taskNames">
           <list>
             <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="Mouseozp [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="classes" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -178,12 +196,56 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="Mouseozp [jpackage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jpackage" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Mouseozp [packageExe]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="packageExe" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Mouseozp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--scan --stacktrace" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -200,35 +262,28 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tracker.MainKt" />
-      <module name="MouseMonitor.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Gradle.Mouseozp [jpackage]" />
+      <item itemvalue="Gradle.Mouseozp [packageExe]" />
       <item itemvalue="Gradle.Mouseozp [build]" />
-      <item itemvalue="Gradle.Mouseozp [classes]" />
       <item itemvalue="Gradle.Mouseozp [clean]" />
       <item itemvalue="Gradle.Mouseozp [run]" />
-      <item itemvalue="Kotlin.MainKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Mouseozp [jpackage]" />
         <item itemvalue="Gradle.Mouseozp [run]" />
         <item itemvalue="Gradle.Mouseozp [build]" />
         <item itemvalue="Gradle.Mouseozp [clean]" />
-        <item itemvalue="Gradle.Mouseozp [classes]" />
-        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Gradle.Mouseozp [packageExe]" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
   </component>
@@ -242,14 +297,28 @@
       <updated>1748446849981</updated>
       <workItem from="1748446853473" duration="5029000" />
       <workItem from="1748458699098" duration="1330000" />
-      <workItem from="1748466715126" duration="7312000" />
-      <workItem from="1748805722470" duration="8000" />
-      <workItem from="1751686086441" duration="112000" />
+      <workItem from="1753540388504" duration="3028000" />
+      <workItem from="1753543529589" duration="412000" />
+      <workItem from="1753543961707" duration="124000" />
+      <workItem from="1753544145945" duration="991000" />
+      <workItem from="1753545347790" duration="256000" />
+      <workItem from="1753545692715" duration="4829000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
