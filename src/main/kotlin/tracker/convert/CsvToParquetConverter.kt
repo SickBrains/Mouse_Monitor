@@ -15,7 +15,6 @@ import org.apache.hadoop.conf.Configuration
 
 object CsvToParquetConverter {
 
-    // Implementation of OutputFile for local file writing
     private class LocalOutputFile(private val file: File) : OutputFile {
         override fun create(blockSizeHint: Long): PositionOutputStream = createStream()
         override fun createOrOverwrite(blockSizeHint: Long): PositionOutputStream = createStream()
@@ -54,12 +53,12 @@ object CsvToParquetConverter {
             .requiredInt("left")
             .requiredInt("right")
             .requiredInt("middle")
-            .requiredInt("x1")
-            .requiredInt("x2")
-            .requiredInt("ctrl")
-            .requiredInt("shift")
-            .requiredInt("alt")
-            .requiredInt("win")
+//            .requiredInt("x1")
+//            .requiredInt("x2")
+//            .requiredInt("ctrl")
+//            .requiredInt("shift")
+//            .requiredInt("alt")
+//            .requiredInt("win")
             .requiredString("window")
             .requiredInt("repeats")
             .endRecord()
@@ -84,12 +83,12 @@ object CsvToParquetConverter {
                 put("left", parts[4].toInt())
                 put("right", parts[5].toInt())
                 put("middle", parts[6].toInt())
-                put("x1", parts[7].toInt())
-                put("x2", parts[8].toInt())
-                put("ctrl", parts[9].toInt())
-                put("shift", parts[10].toInt())
-                put("alt", parts[11].toInt())
-                put("win", parts[12].toInt())
+//                put("x1", parts[7].toInt())
+//                put("x2", parts[8].toInt())
+//                put("ctrl", parts[9].toInt())
+//                put("shift", parts[10].toInt())
+//                put("alt", parts[11].toInt())
+//                put("win", parts[12].toInt())
                 put("window", parts[13].removeSurrounding("\""))
                 put("repeats", parts.getOrNull(14)?.toInt() ?: 0)
             }

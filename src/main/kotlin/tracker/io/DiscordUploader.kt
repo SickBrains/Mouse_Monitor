@@ -11,7 +11,33 @@ class DiscordUploader(private val webhookUrl: String) {
 
     private val client = OkHttpClient()
 
+
+    // NOT ALLOWED DUE TO PRIVACY REASONS
+
+
     fun uploadCsv(file: File, username: String = "MouseTracker", message: String = "New mouse data") {
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (!file.exists()) {
             println("File not found: ${file.absolutePath}")
             return
