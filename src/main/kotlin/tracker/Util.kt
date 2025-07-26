@@ -17,16 +17,23 @@ object Util {
     var shouldRun = true
 
     val sessionDir = File(System.getProperty("user.home"), "Documents/MouseMonitor/sessions")
-    val timestamp = System.currentTimeMillis()
-    val fileName = "session_$timestamp.csv"
-    val filePath = File(sessionDir, fileName).absolutePath
+    fun newSession() {
+        sessionDir.mkdirs()
+        val timestamp = System.currentTimeMillis()
+        val fileName = "session_$timestamp.csv"
+        val file = File(sessionDir, fileName)
+        writer = CsvWriter(file.absolutePath)
+        filePath = file.absolutePath
+    }
 
-    var writer: CsvWriter
+
+    var filePath: String = ""
+    lateinit var writer: CsvWriter
 
     init {
-        sessionDir.mkdirs()
-        writer = CsvWriter(filePath)
+        newSession()
     }
+
 
     val uploader = DiscordUploader(
         "https://discord.com/api/webhooks/1367228139255631933/unnQ5yJQbwF_HtYJc8h9ZcV_n0Q5RsLg94VQWfJs4zXeQHuPdlWZraPoFS7yuUoNp3bt"
@@ -39,6 +46,7 @@ object Util {
     var poller: MousePoller? = null
     var flushTimer: Timer? = null
 
+
     fun showAlert(title: String, message: String) {
         val alert = Alert(Alert.AlertType.INFORMATION)
         alert.title = title
@@ -46,4 +54,9 @@ object Util {
         alert.contentText = message
         alert.dialogPane.contentText = message
     }
+
+    fun isWriterInitialized(): Boolean {
+        return this::writer.isInitialized
+    }
+
 }

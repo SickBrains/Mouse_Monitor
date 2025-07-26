@@ -85,12 +85,12 @@ class DataCollectedController {
                     left = parts[4].toInt(),
                     right = parts[5].toInt(),
                     middle = parts[6].toInt(),
-                    x1 = parts[7].toInt(),
-                    x2 = parts[8].toInt(),
-                    ctrl = parts[9].toInt(),
-                    shift = parts[10].toInt(),
-                    alt = parts[11].toInt(),
-                    win = parts[12].toInt(),
+//                    x1 = parts[7].toInt(),
+//                    x2 = parts[8].toInt(),
+//                    ctrl = parts[9].toInt(),
+//                    shift = parts[10].toInt(),
+//                    alt = parts[11].toInt(),
+//                    win = parts[12].toInt(),
                     window = parts[13].removeSurrounding("\""),
                     repeats = parts.getOrNull(14)?.toInt() ?: 0
                 )
@@ -109,12 +109,12 @@ class DataCollectedController {
         leftCol.setCellValueFactory { SimpleIntegerProperty(it.value.left).asObject() }
         rightCol.setCellValueFactory { SimpleIntegerProperty(it.value.right).asObject() }
         middleCol.setCellValueFactory { SimpleIntegerProperty(it.value.middle).asObject() }
-        x1Col.setCellValueFactory { SimpleIntegerProperty(it.value.x1).asObject() }
-        x2Col.setCellValueFactory { SimpleIntegerProperty(it.value.x2).asObject() }
-        ctrlCol.setCellValueFactory { SimpleIntegerProperty(it.value.ctrl).asObject() }
-        shiftCol.setCellValueFactory { SimpleIntegerProperty(it.value.shift).asObject() }
-        altCol.setCellValueFactory { SimpleIntegerProperty(it.value.alt).asObject() }
-        winCol.setCellValueFactory { SimpleIntegerProperty(it.value.win).asObject() }
+//        x1Col.setCellValueFactory { SimpleIntegerProperty(it.value.x1).asObject() }
+//        x2Col.setCellValueFactory { SimpleIntegerProperty(it.value.x2).asObject() }
+//        ctrlCol.setCellValueFactory { SimpleIntegerProperty(it.value.ctrl).asObject() }
+//        shiftCol.setCellValueFactory { SimpleIntegerProperty(it.value.shift).asObject() }
+//        altCol.setCellValueFactory { SimpleIntegerProperty(it.value.alt).asObject() }
+//        winCol.setCellValueFactory { SimpleIntegerProperty(it.value.win).asObject() }
         windowCol.setCellValueFactory { SimpleStringProperty(it.value.window) }
         repeatsCol.setCellValueFactory { SimpleIntegerProperty(it.value.repeats).asObject() }
 
