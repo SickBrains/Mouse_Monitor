@@ -5,6 +5,7 @@ import javafx.application.Platform
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.stage.Stage
+import kotlin.concurrent.thread
 
 
 class MainApp : Application() {
@@ -20,6 +21,8 @@ class MainApp : Application() {
         primaryStage.title = "Mouse Tracker GUI"
         primaryStage.scene = Scene(root)
         primaryStage.show()
+
+
     }
 }
 

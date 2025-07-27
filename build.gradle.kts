@@ -117,7 +117,7 @@ tasks.register<Exec>("jpackage") {
         "--main-class", "tracker.MainKt",
         "--dest", outputDir,
         "--icon", iconPath,
-        "--app-version", "1.0.0",
+        "--app-version", "1.0.5",
         "--win-shortcut",
         "--win-menu",
         "--win-dir-chooser"

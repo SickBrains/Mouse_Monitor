@@ -53,23 +53,22 @@ object CsvToParquetConverter {
             .requiredInt("left")
             .requiredInt("right")
             .requiredInt("middle")
-//            .requiredInt("x1")
-//            .requiredInt("x2")
-//            .requiredInt("ctrl")
-//            .requiredInt("shift")
-//            .requiredInt("alt")
-//            .requiredInt("win")
             .requiredString("window")
             .requiredInt("repeats")
             .endRecord()
 
-        val parquetFile = File(csvFile.absolutePath.replace(".csv", ".parquet"))
+        val baseDir = csvFile.parentFile
+        val parquetDir = File(baseDir, "parquet").apply { mkdirs() }
+        val metadataDir = File(baseDir, "metadata").apply { mkdirs() }
 
-        val writer: ParquetWriter<GenericData.Record> = AvroParquetWriter.builder<GenericData.Record>(LocalOutputFile(parquetFile))
-            .withSchema(schema)
-            .withCompressionCodec(CompressionCodecName.SNAPPY)
-            .withConf(Configuration())
-            .build()
+        val parquetFile = File(parquetDir, csvFile.nameWithoutExtension + ".parquet")
+
+        val writer: ParquetWriter<GenericData.Record> =
+            AvroParquetWriter.builder<GenericData.Record>(LocalOutputFile(parquetFile))
+                .withSchema(schema)
+                .withCompressionCodec(CompressionCodecName.SNAPPY)
+                .withConf(Configuration())
+                .build()
 
         lines.forEach { line ->
             val parts = line.split(",")
@@ -83,12 +82,6 @@ object CsvToParquetConverter {
                 put("left", parts[4].toInt())
                 put("right", parts[5].toInt())
                 put("middle", parts[6].toInt())
-//                put("x1", parts[7].toInt())
-//                put("x2", parts[8].toInt())
-//                put("ctrl", parts[9].toInt())
-//                put("shift", parts[10].toInt())
-//                put("alt", parts[11].toInt())
-//                put("win", parts[12].toInt())
                 put("window", parts[13].removeSurrounding("\""))
                 put("repeats", parts.getOrNull(14)?.toInt() ?: 0)
             }
@@ -99,9 +92,10 @@ object CsvToParquetConverter {
         writer.close()
 
         val metadata = MetadataCollector.collect()
-        val jsonFile = File(csvFile.absolutePath.replace(".csv", ".meta.json"))
+        val jsonFile = File(metadataDir, csvFile.nameWithoutExtension + ".meta.json")
         jacksonObjectMapper()
             .writerWithDefaultPrettyPrinter()
             .writeValue(jsonFile, metadata)
     }
+
 }

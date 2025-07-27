@@ -76,11 +76,11 @@ class MainService {
         idleMonitor = Thread {
             try {
                 while (!Thread.currentThread().isInterrupted && shouldRun) {
-                    Thread.sleep(30_000)
+                    Thread.sleep(15_000)
                     val idleTime = System.currentTimeMillis() - (poller?.lastMovementTime ?: 0L)
                     println("[IdleMonitor] Current idle time: $idleTime ms")
 
-                    if (idleTime >= 90_000) {
+                    if (idleTime >= 60_000) {
                         println("[IdleMonitor] Mouse idle threshold reached. Ending session.")
                         stopTrackingWithoutExit(keepAppRunning = true)
 

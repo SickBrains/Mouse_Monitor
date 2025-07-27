@@ -20,7 +20,6 @@ object MetadataCollector {
         val ok = Native.user32.SystemParametersInfoW(0x0070, 0, buffer, 0)
         val mouseSpeed = if (ok) buffer.getInt(0) else -1
 
-        val mouseDeviceId = "VID_0000&PID_0000"
         val timestamp = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(Date())
 
         return SystemMetadata(
@@ -28,7 +27,6 @@ object MetadataCollector {
             screenHeight = screenHeight,
             dpi = dpi,
             mouseSpeed = mouseSpeed,
-            mouseDeviceId = mouseDeviceId,
             parquetVersion = "1.0",
             conversionTimestamp = timestamp
         )

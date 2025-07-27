@@ -46,6 +46,22 @@
         <Tab text="     Main     ">
         </Tab>
         <Tab text="     Advanced     ">
+            <content>
+                <AnchorPane>
+                    <children>
+                        <Label layoutX="30.0" layoutY="30.0" text="Updater">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Button layoutX="30.0" layoutY="70.0" text="Check for Updates"
+                                onAction="#checkForUpdatesClicked"/>
+                        <Label fx:id="updateStatus" layoutX="30.0" layoutY="120.0" text="Status: Not checked"/>
+                        <Label fx:id="versionLabel" layoutX="90.0" layoutY="160.0" text="Version: Checking..." />
+
+                    </children>
+                </AnchorPane>
+            </content>
         </Tab>
         <Tab text="Saved data">
             <content>

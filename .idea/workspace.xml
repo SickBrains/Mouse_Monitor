@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532ceec5-daa2-49bf-891e-b8fe3447ee1b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/updater/Updater.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/Util.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/CsvToParquetConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/CsvToParquetConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/data/CsvRow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/data/CsvRow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/data/StateSnapshot.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/data/StateSnapshot.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/data/Writer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/data/Writer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/input/MousePoller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/input/MousePoller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/input/win/Native.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/input/win/Native.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/io/DiscordUploader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/io/DiscordUploader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/MainApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/MainApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/MetadataCollector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/convert/MetadataCollector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/input/UIAutomationHelper.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/logic/MainService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/logic/MainService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/Tray.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/Tray.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/controller/DataCollectedController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/controller/DataCollectedController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/FittsLawVisualizer.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/controller/MainController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/tracker/ui/controller/MainController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tracker/ui/fxml/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tracker/ui/fxml/GUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +44,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="MouseMonitor" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="MouseMonitor" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -129,7 +117,7 @@
     &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;d7b29f80&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/GitHub/Mouseozp/build.gradle.kts&quot;,
@@ -218,28 +206,6 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Mouseozp [packageExe]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="packageExe" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="Mouseozp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -262,12 +228,19 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tracker.MainKt" />
+      <module name="MouseMonitor.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Gradle.Mouseozp [jpackage]" />
-      <item itemvalue="Gradle.Mouseozp [packageExe]" />
       <item itemvalue="Gradle.Mouseozp [build]" />
       <item itemvalue="Gradle.Mouseozp [clean]" />
       <item itemvalue="Gradle.Mouseozp [run]" />
+      <item itemvalue="Kotlin.MainKt" />
     </list>
     <recent_temporary>
       <list>
@@ -275,7 +248,7 @@
         <item itemvalue="Gradle.Mouseozp [run]" />
         <item itemvalue="Gradle.Mouseozp [build]" />
         <item itemvalue="Gradle.Mouseozp [clean]" />
-        <item itemvalue="Gradle.Mouseozp [packageExe]" />
+        <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
   </component>
@@ -303,6 +276,9 @@
       <workItem from="1753544145945" duration="991000" />
       <workItem from="1753545347790" duration="256000" />
       <workItem from="1753545692715" duration="4829000" />
+      <workItem from="1753553980219" duration="540000" />
+      <workItem from="1753566644740" duration="7643000" />
+      <workItem from="1753626493574" duration="1465000" />
     </task>
     <servers />
   </component>

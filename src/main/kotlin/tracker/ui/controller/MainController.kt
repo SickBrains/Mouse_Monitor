@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.control.Alert
+import javafx.scene.control.Label
 import javafx.scene.control.ListView
 import javafx.stage.Stage
 import tracker.Util
@@ -20,10 +21,14 @@ import tracker.logic.MainService
 import tracker.ui.Tray
 import java.io.File
 import java.util.*
+import kotlin.concurrent.thread
 
 class MainController {
 
     @FXML lateinit var sessionFiles: ListView<String>
+
+    @FXML
+    private lateinit var versionLabel: Label
 
 
     @FXML
@@ -37,7 +42,44 @@ class MainController {
         }?.map { it.name } ?: emptyList()
         sessionFiles.items = FXCollections.observableArrayList(files)
         println("Found session files: $files")
+
+        val localVersionFile = File(System.getenv("LOCALAPPDATA"), "MouseMonitor/version.txt")
+        val version = if (localVersionFile.exists()) localVersionFile.readText().trim() else "Unknown"
+        versionLabel.text = "Version $version"
+
+
+        Platform.runLater {
+            val stage = sessionFiles.scene?.window as? Stage
+            stage?.setOnCloseRequest {
+                println("[MainController] Main window closed before starting tracking")
+                Platform.exit()
+                kotlin.system.exitProcess(0)
+            }
+        }
     }
+
+    @FXML
+    private lateinit var updateStatus: Label
+
+
+
+    @FXML
+    fun checkForUpdatesClicked() {
+        updateStatus.text = "Status: Checking..."
+        Thread {
+            val result = Updater.checkForUpdate { msg ->
+                Platform.runLater { updateStatus.text = msg }
+            }
+
+            Platform.runLater {
+                updateStatus.text = result.message
+                versionLabel.text = "Version: ${result.version}"
+            }
+        }.start()
+    }
+
+
+
 
     private fun hasCsvHeader(file: File): Boolean {
         return try {
