@@ -38,24 +38,6 @@ class DataCollectedController {
     lateinit var middleCol: TableColumn<CsvRow, Int>
 
     @FXML
-    lateinit var x1Col: TableColumn<CsvRow, Int>
-
-    @FXML
-    lateinit var x2Col: TableColumn<CsvRow, Int>
-
-    @FXML
-    lateinit var ctrlCol: TableColumn<CsvRow, Int>
-
-    @FXML
-    lateinit var shiftCol: TableColumn<CsvRow, Int>
-
-    @FXML
-    lateinit var altCol: TableColumn<CsvRow, Int>
-
-    @FXML
-    lateinit var winCol: TableColumn<CsvRow, Int>
-
-    @FXML
     lateinit var windowCol: TableColumn<CsvRow, String>
 
     @FXML
@@ -76,7 +58,13 @@ class DataCollectedController {
 
         val rows = file.readLines().drop(1).mapNotNull { line ->
             val parts = line.split(",")
-            if (parts.size >= 14) {
+            if (parts.size >= 9) {
+                val repeats = parts.last().trim().toIntOrNull() ?: 0
+                val window = parts.subList(7, parts.size - 1)
+                    .joinToString(",")
+                    .trim()
+                    .removeSurrounding("\"")
+                    .replace("\"\"", "\"")
                 CsvRow(
                     start = parts[0].toLong(),
                     end = parts[1].toLong(),
@@ -85,14 +73,8 @@ class DataCollectedController {
                     left = parts[4].toInt(),
                     right = parts[5].toInt(),
                     middle = parts[6].toInt(),
-//                    x1 = parts[7].toInt(),
-//                    x2 = parts[8].toInt(),
-//                    ctrl = parts[9].toInt(),
-//                    shift = parts[10].toInt(),
-//                    alt = parts[11].toInt(),
-//                    win = parts[12].toInt(),
-                    window = parts[13].removeSurrounding("\""),
-                    repeats = parts.getOrNull(14)?.toInt() ?: 0
+                    window = window,
+                    repeats = repeats
                 )
             } else null
         }
@@ -109,12 +91,6 @@ class DataCollectedController {
         leftCol.setCellValueFactory { SimpleIntegerProperty(it.value.left).asObject() }
         rightCol.setCellValueFactory { SimpleIntegerProperty(it.value.right).asObject() }
         middleCol.setCellValueFactory { SimpleIntegerProperty(it.value.middle).asObject() }
-//        x1Col.setCellValueFactory { SimpleIntegerProperty(it.value.x1).asObject() }
-//        x2Col.setCellValueFactory { SimpleIntegerProperty(it.value.x2).asObject() }
-//        ctrlCol.setCellValueFactory { SimpleIntegerProperty(it.value.ctrl).asObject() }
-//        shiftCol.setCellValueFactory { SimpleIntegerProperty(it.value.shift).asObject() }
-//        altCol.setCellValueFactory { SimpleIntegerProperty(it.value.alt).asObject() }
-//        winCol.setCellValueFactory { SimpleIntegerProperty(it.value.win).asObject() }
         windowCol.setCellValueFactory { SimpleStringProperty(it.value.window) }
         repeatsCol.setCellValueFactory { SimpleIntegerProperty(it.value.repeats).asObject() }
 

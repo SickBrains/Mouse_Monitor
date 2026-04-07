@@ -27,7 +27,6 @@ dependencies {
     implementation("net.java.dev.jna:jna:5.14.0")
     implementation("net.java.dev.jna:jna-platform:5.14.0")
     implementation(files("libs/image4j-0.7.2.jar"))
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     implementation("org.apache.parquet:parquet-avro:1.15.2")
     implementation("org.apache.avro:avro:1.11.4")

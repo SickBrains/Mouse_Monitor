@@ -72,7 +72,16 @@ object CsvToParquetConverter {
 
         lines.forEach { line ->
             val parts = line.split(",")
-            if (parts.size < 15) return@forEach
+            if (parts.size < 9) return@forEach
+
+            // Window title is quoted and may contain commas, so rejoin everything
+            // between index 7 and the last column (repeats)
+            val repeats = parts.last().trim().toIntOrNull() ?: 0
+            val window = parts.subList(7, parts.size - 1)
+                .joinToString(",")
+                .trim()
+                .removeSurrounding("\"")
+                .replace("\"\"", "\"")
 
             val record = GenericData.Record(schema).apply {
                 put("start", parts[0].toLong())
@@ -82,8 +91,8 @@ object CsvToParquetConverter {
                 put("left", parts[4].toInt())
                 put("right", parts[5].toInt())
                 put("middle", parts[6].toInt())
-                put("window", parts[13].removeSurrounding("\""))
-                put("repeats", parts.getOrNull(14)?.toInt() ?: 0)
+                put("window", window)
+                put("repeats", repeats)
             }
 
             writer.write(record)

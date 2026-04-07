@@ -14,12 +14,6 @@
       <TableColumn fx:id="leftCol" prefWidth="50.0" text="left" />
       <TableColumn fx:id="rightCol" prefWidth="50.0" text="right" />
       <TableColumn fx:id="middleCol" prefWidth="50.0" text="middle" />
-      <TableColumn prefWidth="50.0" text="x1" fx:id="x1Col" />
-      <TableColumn prefWidth="50.0" text="x2" fx:id="x2Col" />
-      <TableColumn fx:id="ctrlCol" prefWidth="50.0" text="ctrl" />
-      <TableColumn fx:id="shiftCol" prefWidth="50.0" text="shift" />
-      <TableColumn fx:id="altCol" prefWidth="50.0" text="alt" />
-      <TableColumn fx:id="winCol" prefWidth="50.0" text="win" />
       <TableColumn fx:id="windowCol" prefWidth="352.0" text="window" />
       <TableColumn fx:id="repeatsCol" prefWidth="51.0" text="repeats" />
     </columns>

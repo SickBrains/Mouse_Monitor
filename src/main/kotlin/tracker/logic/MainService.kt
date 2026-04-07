@@ -84,10 +84,9 @@ class MainService {
                         println("[IdleMonitor] Mouse idle threshold reached. Ending session.")
                         stopTrackingWithoutExit(keepAppRunning = true)
 
-                        println("[IdleMonitor] Converting CSV to Parquet and uploading...")
+                        println("[IdleMonitor] Converting CSV to Parquet...")
                         val csvFile = File(Util.filePath)
                         tracker.convert.CsvToParquetConverter.convert(csvFile)
-                        Util.uploader.uploadCsv(csvFile)
 
                         Platform.runLater {
                             println("[IdleMonitor] Showing idle alert to user")

@@ -5,7 +5,6 @@ import javafx.scene.control.Alert
 import javafx.stage.Stage
 import tracker.data.CsvWriter
 import tracker.input.MousePoller
-import tracker.io.DiscordUploader
 import java.awt.SystemTray
 import java.awt.TrayIcon
 import java.io.File
@@ -34,10 +33,6 @@ object Util {
         newSession()
     }
 
-
-    val uploader = DiscordUploader(
-        "https://discord.com/api/webhooks/1367228139255631933/unnQ5yJQbwF_HtYJc8h9ZcV_n0Q5RsLg94VQWfJs4zXeQHuPdlWZraPoFS7yuUoNp3bt"
-    )
 
     val tray: SystemTray = SystemTray.getSystemTray()
     var icon: TrayIcon? = null
